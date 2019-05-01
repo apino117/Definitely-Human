@@ -14,6 +14,9 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
+    <!-- Bootstrap with popper for dropdowns -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
     <!-- Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -23,15 +26,70 @@
 
 <body>
 
-
-    <!-- Jumbotron -->
+    <!----------------- Header ----------------->
     <div class="jumbotron jumbotron-fluid">
         <div class="container" id="jumbotron-container">
-            <h1 class="display-4">Survey Page!</h1>
+            <h1 class="display-4">Exchange Information for Emotional Connection!</h1>
             <hr>
-            <p class="lead">You Made It!</p>
+            <p class="lead">Give us your name and a human picture, only then will we accept your answers.</p>
         </div>
     </div>
+
+    <!----------------- About You ----------------->
+
+    <!----------------- Survey Questions ----------------->
+    <div class="container" id="survey-container">
+        <div class="row" id="survey-row">
+            <div class="col-12" id="survey-column">
+                <h2>Question One</h2>
+                <p>I have metacarpals and can use them for a variety of tasks.</p>
+
+                <!-- Dropdown Menu -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select from the agreement spectrum
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button">1 (Strongly Disagree)</button>
+                        <button class="dropdown-item" type="button">2</button>
+                        <button class="dropdown-item" type="button">3</button>
+                        <button class="dropdown-item" type="button">4</button>
+                        <button class="dropdown-item" type="button">5 (Strongly Agree) </button>
+                    </div>
+                </div>
+
+                <h2>Question Two</h2>
+                <p>I find it perfectly acceptable to bear my teeth at complete strangers in greeting.</p>
+
+                <!-- Dropdown Menu -->
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select from the agreement spectrum
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button">1 (Strongly Disagree)</button>
+                        <button class="dropdown-item" type="button">2</button>
+                        <button class="dropdown-item" type="button">3</button>
+                        <button class="dropdown-item" type="button">4</button>
+                        <button class="dropdown-item" type="button">5 (Strongly Agree) </button>
+                    </div>
+                </div>
+
+                <h2>Question Three</h2>
+                <p></p>
+
+                <h2>Question Four</h2>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!----------------- Submit Bar ----------------->
+
 
 
 
