@@ -116,7 +116,7 @@
         <div class="row" id="submit-row">
             <div class="col-12" id="submit-column">
                 <hr>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Put forth!</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="submit-btn">Put forth!</button>
             </div>
         </div>
     </div>
@@ -127,16 +127,19 @@
             <div class="col-12" id="api-link-column">
                 <hr>
                 <p>
-                    <a href="#">API List</a> | <a href="#">Github Repo</a>
+                    <a href="/api/humans">API List</a> | <a href="https://github.com/apino117/Definitely-Human">Github
+                        Repo</a>
                 </p>
             </div>
         </div>
     </div>
 
 
-<!-- ======================================================== JAVASCRIPT ======================================================== -->
+    <!-- ======================================================== JAVASCRIPT ======================================================== -->
     <script>
-
+        $("#submit-btn").on("click", function () {
+            alert("click!")
+        })
 
     </script>
 </body>
