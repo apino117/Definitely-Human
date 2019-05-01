@@ -5,9 +5,15 @@ var humansData = require("../data/humans");
 
 // --------------- Get Routes --------------- //
 
-module.exports = function(app) {
+module.exports = function (app) {
 
-  app.get("/api/humans", function(req, res) {
-    res.json(humansData);
-  });
+    // Get Route
+    app.get("/api/humans", function (req, res) {
+        res.json(humansData);
+    });
+
+    // Post Route
+    // app.post("/api/humans", function(req, res) {
+
+    // });
 };
