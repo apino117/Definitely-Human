@@ -149,7 +149,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Humans have names and look like something - you need a name and a photo if anyone's going to buy this.
+                    <p>Humans have names and look like something - you need a name and a photo if anyone's going to buy
+                        this.
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -162,15 +163,25 @@
 
     <!-- ======================================================== JAVASCRIPT ======================================================== -->
     <script>
-        $("#submit-btn").on("click", function () {
+        $("#submit-btn").on("click", function (event) {
+
+            event.preventDefault();
 
             // Input validation - if user leaves name and/or photo blank
-            if ($("#name-input").val("") || $("#photo-input").val("")) {
-
+            if ($("#name-input").val().trim() === "" || $("#photo-input").val().trim() === "") {
                 // Put up a modal
                 $("#user-input-modal").modal("show");
+                return;
             };
 
+            var newHuman = {
+                name: $("#name-input").val().trim(),
+                photo: $("#photo-input").val().trim(),
+            };
+
+            console.log(newHuman);
+
+            
         })
 
     </script>
