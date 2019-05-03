@@ -71,38 +71,34 @@
                 <h2>Question One</h2>
                 <p>I have metacarpals and can use them for a variety of tasks.</p>
 
-                <!-- Dropdown Menu -->
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Select from the agreement spectrum
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (Strongly Disagree)</button>
-                        <button class="dropdown-item" type="button">2</button>
-                        <button class="dropdown-item" type="button">3</button>
-                        <button class="dropdown-item" type="button">4</button>
-                        <button class="dropdown-item" type="button">5 (Strongly Agree) </button>
-                    </div>
-                </div>
+                <!----------------- Dropdown Menu ----------------->
+                <small class="form-text text-muted">Select from the agreement spectrum</small>
+                <select id="q1">
+                    <option value=""></option>
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3 (Ambivalent)</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+                <br>
+                <br>
 
                 <h2>Question Two</h2>
                 <p>I find it perfectly acceptable to bear my teeth at complete strangers in greeting.</p>
 
-                <!-- Dropdown Menu -->
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Select from the agreement spectrum
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">1 (Strongly Disagree)</button>
-                        <button class="dropdown-item" type="button">2</button>
-                        <button class="dropdown-item" type="button">3</button>
-                        <button class="dropdown-item" type="button">4</button>
-                        <button class="dropdown-item" type="button">5 (Strongly Agree) </button>
-                    </div>
-                </div>
+                <!----------------- Dropdown Menu ----------------->
+                <small class="form-text text-muted">Select from the agreement spectrum</small>
+                <select id="q2">
+                    <option value=""></option>
+                    <option value="1">1 (Strongly Disagree)</option>
+                    <option value="2">2</option>
+                    <option value="3">3 (Ambivalent)</option>
+                    <option value="4">4</option>
+                    <option value="5">5 (Strongly Agree)</option>
+                </select>
+                <br>
+                <br>
 
                 <h2>Question Three</h2>
                 <p></p>
@@ -177,11 +173,13 @@
             var newHuman = {
                 name: $("#name-input").val().trim(),
                 photo: $("#photo-input").val().trim(),
+                q1: $("#q1").val(),
+                q2: $("#q2").val(),
             };
 
             console.log(newHuman);
 
-            
+
         })
 
     </script>
