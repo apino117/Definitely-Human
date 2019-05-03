@@ -73,7 +73,7 @@
 
                 <!----------------- Dropdown Menu ----------------->
                 <small class="form-text text-muted">Select from the agreement spectrum</small>
-                <select id="q1">
+                <select class="quest" id="q1">
                     <option value=""></option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -89,7 +89,7 @@
 
                 <!----------------- Dropdown Menu ----------------->
                 <small class="form-text text-muted">Select from the agreement spectrum</small>
-                <select id="q2">
+                <select class="quest" id="q2">
                     <option value=""></option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -128,7 +128,7 @@
                 <hr>
                 <p>
                     <a href="/api/humans">API List</a> | <a href="https://github.com/apino117/Definitely-Human">Github
-                        Repo</a> | <a href="api/clear">Clear</a>
+                        Repo</a> | <a href="api/clear">Clear Humans List</a>
                 </p>
             </div>
         </div>
@@ -145,8 +145,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Humans have names and look like something - you need a name and a photo if anyone's going to buy
-                        this.
+                    <p>Something's missing. Human's have names, appearances and thoughts so if you haven't supplied your
+                        human name, a photo and/or answered the questions...you need to do all of that. None of this is
+                        going to work if you don't do all of it nobody's going to believe it and I'll have blown our
+                        entire budget for nothing!
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -159,17 +161,23 @@
 
     <!-- ======================================================== JAVASCRIPT ======================================================== -->
     <script>
+
+        
+
+        // When the submit button is clicked
         $("#submit-btn").on("click", function (event) {
 
+            // Prevent a refresh
             event.preventDefault();
 
             // Input validation - if user leaves name and/or photo blank
-            if ($("#name-input").val().trim() === "" || $("#photo-input").val().trim() === "") {
+            if ($("#name-input").val().trim() === "" || $("#photo-input").val().trim() === "" || $(".quest").val() === "") {
                 // Put up a modal
                 $("#user-input-modal").modal("show");
                 return;
             };
 
+            // Create a new object from the answers
             var newHuman = {
                 name: $("#name-input").val().trim(),
                 photo: $("#photo-input").val().trim(),
@@ -179,23 +187,61 @@
                 ],
             };
 
-            console.log(newHuman);
 
-            $.post("/api/humans", newHuman,
-                function (data) {
+            // ======================================== Function to Do Math ======================================== //
 
-                    // Tells user it
-                    if (data) {
-                        alert("Successfull addition to database!");
-                    }
+            // This one will have to be a loop through all the scores in the array, so it'll be the current score at a given point
+            // scoreArrayOne = humansArray[i].Scores;
 
-                    // Clear the form when submitting
-                    $("#name-input").val("");
-                    $("#photo-input").val("");
-                    $("#q1").val("");
-                    $("#q2").val("");
+            // This one will be the newest addition to our array
+            // scoreArrayTwo = newHuman.Scores;
 
-                });
+            var humansArray = require("../data/humans");
+
+
+            function findTotalDifference(scoreArrayOne, scoreArrayTwo) {
+
+                // Establish blank array for purity
+                var totalDifferenceArray = [];
+
+                // Loop through both arrays at at each index get the absolute value of their difference
+                for (i = 0; i < 10; i++) {
+                    totalDifferenceArray.push(Math.abs(scoreArrayOne[i] - scoreArrayTwo[i]));
+                };
+
+
+                // Not 100 % on why this works but it does
+                console.log(totalDifferenceArray.reduce(add));
+                function add(currentTotal, nextNumber) {
+                    return currentTotal + nextNumber;
+                };
+            };
+
+            // Loop through each human in the array
+            for (i = 0; i < humansArray.length; i++) {
+
+                findTotalDifference(humansArray[i].scores, newHuman.scores);
+
+            };
+
+            // ======================================== End of Math ======================================== //
+
+            // Post new object
+            $.post("/api/humans", newHuman, function (data) {
+
+                // Confirm it happened
+                if (data) {
+                    alert("Addittion to database successfull!!!");
+                    console.log(newHuman);
+                }
+
+                // Clear the form when submitting
+                $("#name-input").val("");
+                $("#photo-input").val("");
+                $("#q1").val("");
+                $("#q2").val("");
+            });
+
 
 
         })
