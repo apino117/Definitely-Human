@@ -128,7 +128,7 @@
                 <hr>
                 <p>
                     <a href="/api/humans">API List</a> | <a href="https://github.com/apino117/Definitely-Human">Github
-                        Repo</a>
+                        Repo</a> | <a href="api/clear">Clear</a>
                 </p>
             </div>
         </div>
@@ -173,11 +173,29 @@
             var newHuman = {
                 name: $("#name-input").val().trim(),
                 photo: $("#photo-input").val().trim(),
-                q1: $("#q1").val(),
-                q2: $("#q2").val(),
+                scores: [
+                    $("#q1").val(),
+                    $("#q2").val(),
+                ],
             };
 
             console.log(newHuman);
+
+            $.post("/api/humans", newHuman,
+                function (data) {
+
+                    // Tells user it
+                    if (data) {
+                        alert("Successfull addition to database!");
+                    }
+
+                    // Clear the form when submitting
+                    $("#name-input").val("");
+                    $("#photo-input").val("");
+                    $("#q1").val("");
+                    $("#q2").val("");
+
+                });
 
 
         })
