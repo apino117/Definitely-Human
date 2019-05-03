@@ -42,17 +42,19 @@
                 <h2>About me, the human person</h2>
                 <form>
                     <div class="form-group">
-                        <label for="exampleInputName1">Name</label>
-                        <input type="name" class="form-control" id="exampleInputName1" aria-describedby="nameHelp"
+                        <label for="name-input">Name</label>
+                        <input type="text" class="form-control" id="name-input" aria-describedby="nameHelp"
                             placeholder="Regular human name like...Lennemore. That's a name, right? Lennemore? Is that anything?">
                         <small id="nameHelp" class="form-text text-muted">If you weren't assigned a name please report
-                            back to the mother <i>immediately</i> you should <i>not</i> just be wandering around like this.</small>
+                            back to the mother <i>immediately</i> you should <i>not</i> just be wandering around like
+                            this.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPhoto">Photo</label>
-                        <input type="photo" class="form-control" id="exampleInputPhoto"
+                        <input type="text" class="form-control" id="photo-input"
                             placeholder="Submit a normal human photo, perhaps where the most teeth are exposed">
-                            <small class="form-text text-muted">If you need help find a photo where 33.33% is unoccupied by it's subjects.</small>
+                        <small class="form-text text-muted">If you need help find a photo where 33.33% is unoccupied by
+                            it's subjects.</small>
                     </div>
                 </form>
             </div>
@@ -136,11 +138,39 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="user-input-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pssst!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Humans have names and look like something - you need a name and a photo if anyone's going to buy this.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- ======================================================== JAVASCRIPT ======================================================== -->
     <script>
         $("#submit-btn").on("click", function () {
-            alert("click!")
+
+            // Input validation - if user leaves name and/or photo blank
+            if ($("#name-input").val("") || $("#photo-input").val("")) {
+
+                // Put up a modal
+                $("#user-input-modal").modal("show");
+            };
+
         })
 
     </script>
