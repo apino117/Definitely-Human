@@ -24,4 +24,4 @@ If you need any assistance or have questions please reach out to our human liaso
 
 Alright, fellow humans here we go!
 
-![Thumbs_Up_Heart_Gif](thumbs_up_hearts.gif) 
+![Thumbs_Up_Heart_Gif](assets/images/thumbs_up_hearts.gif/) 
