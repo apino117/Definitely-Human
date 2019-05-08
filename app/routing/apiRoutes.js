@@ -42,29 +42,47 @@ module.exports = function (app) {
             var temporaryArray = [];
 
             // Loop through both arrays at at each index get the absolute value of their difference
-            for (i = 0; i < 10; i++) {
+            for (let i = 0; i < 10; i++) {
                 temporaryArray.push(Math.abs(scoreArrayOne[i] - scoreArrayTwo[i]));
             };
 
+            // console.log(temporaryArray);
+
 
             // This is the for loop version of the reduce method, it doesnt use return which was exiting loops early later on in the functions
-            var sum = 0;
+            // var sum = 0;
 
-            for (var i = 0; i < temporaryArray.length; i++) {
-                sum += temporaryArray[i];
-            };
+            // for (var i = 0; i < temporaryArray.length; i++) {
+            //     sum += parseInt(temporaryArray[i]);
+            // };
 
-            console.log(sum);
+            // console.log(sum);
 
-            globalSums.push(parseInt(sum));
+            // globalSums.push(parseInt(sum));
+
+            // console.log((sum);
 
             // // Not 100 % on why this works but it does - it adds everything in the array together
 
-            // console.log(temporaryArray.reduce(add));
+            // console.log(temporaryArray.reduce());
 
             // function add(currentTotal, nextNumber) {
             //     return currentTotal + nextNumber;
             // };
+
+            var sum = temporaryArray.reduce((acc, curr) => {
+                return acc + curr;
+            }, 0);
+
+            // console.log(sum);
+
+            globalSums.push(parseInt(sum));
+
+            // console.log(globalSums);
+
+
+
+
         };
 
         // Test case with just one static array
@@ -78,18 +96,42 @@ module.exports = function (app) {
         // console.log("special number is " + specialNumber);
 
         // Loop through each human in the array
-        for (i = 0; i < specialNumber; i++) {
+        for (let j = 0; j < specialNumber; j++) {
 
-            findTotalDifference(humansData[i].scores, newHuman.scores);
+            // console.log("i is: ", i);
+            // console.log(specialNumber);
+            findTotalDifference(humansData[j].scores, newHuman.scores);
 
-        };
-        
-        // Get the sums in an array
-        console.log("Global sums " + globalSums);
+            // Get the sums in an array
+            console.log("Global sums " + globalSums);
 
-        // Find the lowest number in the array - thats the match because there are the fewest differences
+            // This was just checking if its a number
+            // console.log("is global sums numbers only?: ", globalSums);
 
+
+            let smallestDiff = Math.min(...globalSums);
+            // Find the lowest number in the array - thats the match because there are the fewest differences
+            console.log(smallestDiff);
+
+            if (smallestDiff < 50) {
+                humanIndex = j;
+                minimumDifference = smallestDiff;
+            }
+
+            // console.log("after find total difference");
+
+        }
+
+        console.log(humansData[humanIndex]);
+
+
+        // Use the smallest difference to create an index with which to search the array 
         // Return the JSON info that is in accordance with the match
+
+        humansData.push(req.body);
+
+
+        // Use the JSON to populate a modal
 
 
 

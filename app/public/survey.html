@@ -282,6 +282,28 @@
         </div>
     </div>
 
+    <!-- Result Modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="results-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hey!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h2>Here's Your Match!</h2>
+                    <h3 id="human-name"></h3>
+                    <img id="human-photo">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- ======================================================== JAVASCRIPT ======================================================== -->
     <script>
@@ -342,10 +364,18 @@
                 $("#q8").val("");
                 $("#q9").val("");
                 $("#q10").val("");
+
+
+
+
+                // Update the modal
+                $("#human-name").text(data.name);
+                $("#human-photo").attr("src", data.photo);
+
+
+                // Display Match
+                $("#results-modal").modal("show");
             });
-
-
-
         })
 
     </script>
